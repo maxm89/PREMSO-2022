@@ -1,0 +1,73 @@
+[ atomtypes ]
+
+; charges are specified in itp files
+
+; Three-point models
+; ------------------
+
+; TIP3P (CHARMM)
+mOT_tip3p     8    15.999400    0.000  A  0.315057422683  0.63639
+mHT_tip3p     1     1.008000    0.417  A  0.0400013524445 0.192464
+
+; TIP3P (Standard) = TIP3Ps
+mOT_tip3ps     8    15.999400    0.000  A  0.315057422683  0.63639
+mHT_tip3ps      1   1.008000    0.000   A   0.0 0.0
+
+; SPC
+mOW_spc  8   15.999400   -0.82   A   3.16557e-01 6.50194e-01 ; SPC O
+mHW_spc  1   1.008000    0.41    A   0.0 0.0 ; SPC H
+
+; SPC/E
+mOW_spce  8   15.999400   -0.82   A   3.16557e-01 6.50194e-01 ; SPC O
+mHW_spce  1   1.008000    0.41    A   0.0 0.0 ; SPC H
+
+; TIP3P-FB
+mOW_tip3pfb    8     15.99940     0.000       A    0.317796456355  0.652143528104
+mHW_tip3pfb    1      1.00800     0.000       A    0.00000e+00  0.00000e+00
+
+
+; Four-point models
+; ------------------
+
+; TIP4P
+mOWT4_tip4p    8       15.999400       0.0     A       3.15365e-01     6.48520e-01     ; TIP4p O
+mHWT4_tip4p    1       1.008000        0.52    A       0.0     0.0     ; TIP4p H
+mMWT4_tip4p    0       0.000000        -1.04   D       0.0     0.0     ; TIP4p vsite
+
+
+; TIP4P(2005)
+mOWT4_tip4p2005   15.9994       0.000       A   0.31589       0.77490
+mHW_tip4p2005      1.0079       0.000       A   0.00000E+00   0.00000E+00
+mIW_tip4p2005     0             0.000       D   0.0           0.0
+
+
+; TIP4PD
+mOWT4_tip4pd   15.9994       0.000       A   0.3164998971  0.9365538541
+mHW_tip4pd      1.0079       -1.16       A   0.00000E+00   0.00000E+00
+mIW_tip4pd     0             0.58       D   0.0           0.0
+
+
+; TIP4P-Ew
+mOW_tip4pew   8      16.00    0.0000  A   3.16435e-01  6.80946e-01
+mHW_tip4pew   1       1.008   0.0000  A   0.00000e+00  0.00000e+00
+mMW_tip4pew    0      0.00000     0.00000     D    0.00000e+00  0.00000e+00 ; Same as other virtual sites
+
+; TIP4P-FB
+mOW_tip4pfb    8     15.99940     0.00000     A    3.16555e-01  7.49279e-01
+mHW_tip4pfb    1      1.00800     0.00000     A    0.00000e+00  0.00000e+00
+mMW_tip4pfb    0      0.00000     0.00000     D    0.00000e+00  0.00000e+00 ; Same as other virtual sites
+
+; OPC
+mOW_opc           OW_opc      0.0000  0.0000  A   3.16655e-01  8.903586e-01
+mHW_opc           HW_opc      0.0000  0.0000  A   0.00000e+00  0.00000e+00
+mMW_opc           MW_opc      0.0000  0.0000  D   0.00000e+00  0.00000e+00
+
+
+; Five-point models
+; ------------------
+
+; TIP5P
+mHW_tip5p     1       1.008   0.0000  A   0.00000e+00  0.00000e+00
+mOW_tip5p     8      16.00    0.0000  A   3.12000e-01  6.69440e-01
+mMW_tip5p     0      0.00000     0.00000     D    0.00000e+00  0.00000e+00 ; Same as other virtual sites
+

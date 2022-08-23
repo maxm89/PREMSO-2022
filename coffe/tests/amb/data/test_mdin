@@ -1,0 +1,35 @@
+MD, ramp T and then  const T and P
+
+ &cntrl
+     ntwx=500,ntpr=500,iwrap=0,
+     ntt=3, gamma_ln=1,PRES0=1.0,
+     tempi=298.15,temp0=298.15,
+     dielc=1,cut=8.0,
+     ntc=2,ntf=2,
+     nstlim=100,dt=0.002,
+     ibelly=0,ntr=0,
+     imin=0, irest=0, ntx=1, nmropt=1,
+     ntr=0,ntb=2, ntp=1,
+ &end
+
+ # ewald section
+ &ewald
+     skinnb=2.0,
+     nbflag=1,
+ &end
+
+ # weight section
+ &wt
+     value1=298.15,
+     type='TEMP0',
+     istep1=1,
+     value2=298.15,
+     istep2=12500,
+ &end
+
+ &wt
+     type='END'
+ &end
+ &rst IAT=0, &end
+
+END

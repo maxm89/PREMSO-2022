@@ -1,0 +1,4 @@
+molecule-1-gam.inp.log	0.000 
+molecule-2-gam.inp.log	0.998 
+molecule-3-gam.inp.log	1.877 
+molecule-4-gam.inp.log	3.869 

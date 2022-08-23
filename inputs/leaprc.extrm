@@ -1,0 +1,57 @@
+# ----- leaprc for loading the ExTrm.dat force field
+#
+#       load atom type hybridizations
+#
+addAtomTypes {
+        { "DU"  "C" "sp3" }
+        { "Br"  "Br" "sp3" }
+        { "C"   "C" "sp2" }
+        { "C1"  "C" "sp2" }
+        { "C2"  "C" "sp2" }
+        { "C4"  "C" "sp2" }
+        { "CA"  "C" "sp2" }
+        { "CD"  "C" "sp2" }
+        { "CE"  "C" "sp2" }
+        { "CP"  "C" "sp2" }
+        { "CX"  "C" "sp3" }
+        { "Cl"  "Cl" "sp3" }
+        { "CY"  "C" "sp3" }
+        { "H"   "H" "sp3" }
+        { "H1"  "H" "sp3" }
+        { "H2"  "H" "sp3" }
+        { "HA"  "H" "sp3" }
+        { "HC"  "H" "sp3" }
+        { "HO"  "H" "sp3" }
+        { "HW"  "H" "sp3" }
+        { "N"   "N" "sp2" }
+        { "N2"  "N" "sp2" }
+        { "N3"  "N" "sp3" }
+        { "NT"  "N" "sp3" }
+        { "O"   "O" "sp2" }
+        { "O2"  "O" "sp2" }
+        { "OH"  "O" "sp3" }
+        { "OS"  "O" "sp3" }
+        { "OW"  "O" "sp3" }
+        { "OX"  "O" "sp3" }
+        { "OY"  "O" "sp3" }
+        { "P"   "P" "sp3" }
+        { "S"   "S" "sp3" }
+        { "OK"  "O" "sp3" }
+        { "HK"  "H" "sp3" }
+        { "EP"  ""  "sp3" }
+        { "CY"  "C" "sp3" }
+        { "CK"  "C" "sp2" }
+        { "CT"  "C" "sp3" }
+        { "CJ"  "C" "sp2" }
+        { "HP"  "H" "sp3" } 
+        { "SM"  "S" "sp3" }
+}
+#
+#       load the main paramter set
+#
+ExTrM = loadamberparams SOURCEDIR/ExTrM.Amber.hydrocarbons.dat
+
+#loadOff solvents.lib
+
+#HOH = TP3
+#WAT = TP3

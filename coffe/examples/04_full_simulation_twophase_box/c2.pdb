@@ -1,0 +1,12 @@
+TITLE     GROningen Mixture of Alchemy and Childrens' Stories
+MODEL        1
+ATOM      1  C1  C2H6    1      15.875  10.474   3.768  1.00  0.00           C
+ATOM      2  H1X C2H6    1      16.545   9.593   3.667  1.00  0.00           H
+ATOM      3  H1Y C2H6    1      15.740  11.152   2.898  1.00  0.00           H
+ATOM      4  H1Z C2H6    1      16.314  11.174   4.510  1.00  0.00           H
+ATOM      5  C2  C2H6    1      14.542   9.898   4.168  1.00  0.00           C
+ATOM      6  H2X C2H6    1      14.672   9.398   5.151  1.00  0.00           H
+ATOM      7  H2Y C2H6    1      13.852  10.702   4.502  1.00  0.00           H
+ATOM      8  H2Z C2H6    1      14.056   9.275   3.412  1.00  0.00           H
+TER
+ENDMDL

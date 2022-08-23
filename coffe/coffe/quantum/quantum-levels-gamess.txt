@@ -1,0 +1,237 @@
+## QMOPT (optimization) and QMSP (single-point) options
+## QM10 = HF
+## QM11 = UHF
+## QM12 = ROHF
+
+## QM20 = RHF-MP2
+
+## QM70 = RHF-B3LYP
+
+## QMLMOEDA95 = ROHF-HF
+## QMLMOEDA96 = ROHF-MP2
+
+## QM98 = AM1
+## QM99 = PM3
+
+###############################################################################
+## General full optimization setup (used in every calculation type)
+gamess_QMOPTGEN: $SCF    DIRSCF=.F. CONV=1.0E-08              $END
+gamess_QMOPTGEN: $SYSTEM TIMLIM=50000 MWORDS=mwords MEMDDI=memddi $END
+gamess_QMOPTGEN: $FORCE  METHOD=SEMINUM VIBANL=.F.            $END
+gamess_QMOPTGEN: $STATPT NSTEP=200 OPTTOL=1.0E-06             $END
+gamess_QMOPTGEN: $GUESS  GUESS=HUCKEL                         $END
+gamess_QMOPTGEN: $ZMAT   AUTO=.TRUE. DLC=.TRUE.               $END
+gamess_QMOPTGEN: $DATA
+gamess_QMOPTGEN: Full optimization
+
+## General constraint optimization setup (used in every calculation type)
+gamess_QMcOPTGEN:
+gamess_QMcOPTGEN: $SCF    DIRSCF=.F. CONV=1.0E-08              $END
+gamess_QMcOPTGEN: $SYSTEM TIMLIM=50000 MWORDS=mwords MEMDDI=memddi $END
+gamess_QMcOPTGEN: $FORCE  METHOD=SEMINUM VIBANL=.F.            $END
+gamess_QMcOPTGEN: $STATPT NSTEP=200 OPTTOL=1.0E-06             $END
+gamess_QMcOPTGEN: $GUESS  GUESS=HUCKEL                         $END
+gamess_QMcOPTGEN: $ZMAT   AUTO=.TRUE. DLC=.TRUE. IFZMAT(1)=type1,var1 type2,var2 type3,var3
+gamess_QMcOPTGEN:         FVALUE(1)=val1 val2 var3 $END
+gamess_QMcOPTGEN: $DATA
+gamess_QMcOPTGEN: Full optimization
+
+## General single scf calculation setup (used in every calculation type)
+gamess_QMSPGEN: $SCF    DIRSCF=.T. CONV=1.0E-08  FDIFF=.F. $END
+gamess_QMSPGEN: $SYSTEM TIMLIM=50000 MWORDS=mwords MEMDDI=memddi $END
+gamess_QMSPGEN: $GUESS  GUESS=HUCKEL                          $END
+gamess_QMSPGEN: $DATA
+gamess_QMSPGEN: Single SCF
+
+###############################################################################
+## FULL OPTIMIZATIONS CALCULATIONS
+###############################################################################
+## RHF Default Optimization Setup
+## QMOPT10: HF
+gamess_QMOPT10: $CONTRL ICHARG=icharg NZVAR=nzvar MPLEVL=0 ISPHER=ispher
+gamess_QMOPT10:         RUNTYP=OPTIMIZE SCFTYP=RHF EXETYP=RUN
+gamess_QMOPT10:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMOPT10:         COORD=PRINAXIS                       $END
+
+###############################################################################
+## UHF Default Optimization Setup
+## QMOPT11: UHF
+gamess_QMOPT11: $CONTRL ICHARG=icharg NZVAR=nzvar MPLEVL=0 ISPHER=ispher
+gamess_QMOPT11:         RUNTYP=OPTIMIZE SCFTYP=UHF EXETYP=RUN
+gamess_QMOPT11:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMOPT11:         COORD=PRINAXIS                       $END
+
+###############################################################################
+## ROHF Default Optimization Setup
+## QMOPT12: ROHF
+gamess_QMOPT12: $CONTRL ICHARG=icharg NZVAR=nzvar MPLEVL=0 ISPHER=ispher
+gamess_QMOPT12:         RUNTYP=OPTIMIZE SCFTYP=ROHF EXETYP=RUN
+gamess_QMOPT12:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMOPT12:         COORD=PRINAXIS                       $END
+
+###############################################################################
+## RHF MP2 Default Optimization Setup
+## QMOPT20: MP2
+gamess_QMOPT20: $CONTRL ICHARG=icharg NZVAR=nzvar MPLEVL=2 ISPHER=ispher
+gamess_QMOPT20:         RUNTYP=OPTIMIZE SCFTYP=RHF EXETYP=RUN
+gamess_QMOPT20:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMOPT20:         COORD=PRINAXIS                       $END
+
+###############################################################################
+### RHF B3LYP Default Full Opt Setup
+## QMOPT70 B3LYP
+gamess_QMOPT70: $CONTRL ICHARG=icharg NZVAR=nzvar DFTTYP=B3LYP ISPHER=ispher
+gamess_QMOPT70:         RUNTYP=OPTIMIZE SCFTYP=RHF EXETYP=RUN
+gamess_QMOPT70:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMOPT70:         COORD=PRINAXIS                       $END
+
+###############################################################################
+## SINGLE POINT CALCULATIONS
+###############################################################################
+## RHF Default Single Point Setup
+## QMSP10: HF
+gamess_QMSP10: $CONTRL ICHARG=icharg MPLEVL=0 ISPHER=ispher
+gamess_QMSP10:         RUNTYP=ENERGY SCFTYP=RHF EXETYP=RUN
+gamess_QMSP10:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMSP10:         COORD=PRINAXIS                        $END
+
+###############################################################################
+## RHF MP2 Default Single Point Setup
+## QMSP20: MP2
+gamess_QMSP20: $CONTRL ICHARG=icharg MPLEVL=2 ISPHER=ispher
+gamess_QMSP20:         RUNTYP=ENERGY SCFTYP=RHF EXETYP=RUN
+gamess_QMSP20:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMSP20:         COORD=PRINAXIS                       $END
+
+###############################################################################
+## RHF B3LYP Default Single Point Setup
+## QMSP70: B3LYP
+gamess_QMSP70: $CONTRL ICHARG=icharg DFTTYP=B3LYP INTTYP=HONDO ISPHER=ispher
+gamess_QMSP70:         RUNTYP=ENERGY SCFTYP=RHF EXETYP=RUN
+gamess_QMSP70:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMSP70:         COORD=PRINAXIS                       $END
+
+###############################################################################
+## MISC CALCULATIONS
+###############################################################################
+## AM1 Optimization
+## QMOPT98: AM1
+gamess_QMOPT98: $CONTRL ICHARG=icharg NZVAR=nzvar
+gamess_QMOPT98:         RUNTYP=OPTIMIZE EXETYP=RUN
+gamess_QMOPT98:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMOPT98:         COORD=PRINAXIS                       $END
+gamess_QMOPT98: $SCF    DIRSCF=.T. CONV=1.0E-08              $END
+gamess_QMOPT98: $SYSTEM TIMLIM=50000 MWORDS=200 MEMDDI=0     $END
+gamess_QMOPT98: $FORCE  METHOD=SEMINUM VIBANL=.F.            $END
+gamess_QMOPT98: $STATPT OPTTOL=1.0E-06                       $END
+gamess_QMOPT98: $BASIS  GBASIS=AM1
+gamess_QMOPT98:         DIFFSP=.F.                           $END
+gamess_QMOPT98: $GUESS  GUESS=HUCKEL                         $END
+
+###############################################################################
+## PM3 Optimization
+## QMOPT99: PM3
+gamess_QMOPT99: $CONTRL ICHARG=icharg NZVAR=nzvar
+gamess_QMOPT99:         RUNTYP=OPTIMIZE EXETYP=RUN
+gamess_QMOPT99:         MULT=multiplicity UNITS=ANGS MAXIT=200
+gamess_QMOPT99:         COORD=PRINAXIS                       $END
+gamess_QMOPT99: $SCF    DIRSCF=.T. CONV=1.0E-08              $END
+gamess_QMOPT99: $SYSTEM TIMLIM=50000 MWORDS=200 MEMDDI=0     $END
+gamess_QMOPT99: $FORCE  METHOD=SEMINUM VIBANL=.F.            $END
+gamess_QMOPT99: $STATPT OPTTOL=1.0E-06                       $END
+gamess_QMOPT99: $BASIS  GBASIS=PM3
+gamess_QMOPT99:         DIFFSP=.F.                           $END
+gamess_QMOPT99: $GUESS  GUESS=HUCKEL                         $END
+
+###############################################################################
+
+## ROHF LMOEDA HF Energy Decomp.
+## QMLMOEDA95: HF LMOEDA
+ $CONTRL  ICHARG=0 MPLEVL=0
+          SCFTYP=ROHF RUNTYP=EDA COORD=PRINAXIS $END
+ $SYSTEM  TIMLIM=50000 MWORDS=mwords MEMDDI=memddi  $END
+BASISSET
+ $GUESS   GUESS=HUCKEL                         $END
+LMOEDA
+ $DATA
+Energy Decomposition
+
+###############################################################################
+## ROHF LMOEDA MP2 Energy Decomp.
+## QMLMOEDA96: MP2 LMOEDA
+ $CONTRL  ICHARG=0 MPLEVL=2 ISPHER=1 MAXIT=200
+          SCFTYP=ROHF RUNTYP=EDA COORD=PRINAXIS $END
+ $SYSTEM  TIMLIM=50000 MWORDS=mwords MEMDDI=memddi  $END
+ $SCF     DIRSCF=.T. CONV=1.0E-06   FDIFF=.F.  $END
+BASISSET
+ $GUESS   GUESS=HUCKEL                      $END
+LMOEDA
+ $DATA
+Energy Decomposition
+
+###############################################################################
+## BASIS SETS
+###############################################################################
+## BS01 = STO-3G
+gamess_BS01: $BASIS  GBASIS=N21 NGAUSS=3 $END
+
+## BS02 = 3-21G
+gamess_BS02: $BASIS  GBASIS=N21 NGAUSS=3 NDFUNC=0 NPFUNC=0
+gamess_BS02:         DIFFSP=.F.                           $END
+
+## BS03 = 3-21G(1d)
+gamess_BS03: $BASIS  GBASIS=N21 NGAUSS=3 NDFUNC=1 NPFUNC=0
+gamess_BS03:         DIFFSP=.F.                           $END
+
+## BS04 = 3-21G(1d,1p)
+gamess_BS04: $BASIS  GBASIS=N21 NGAUSS=3 NDFUNC=1 NPFUNC=1
+gamess_BS04:         DIFFSP=.F.                           $END
+
+## BS05 = 3-21+G(1d,1p)
+gamess_BS05: $BASIS  GBASIS=N21 NGAUSS=3 NDFUNC=1 NPFUNC=1
+gamess_BS05:         DIFFSP=.T.                           $END
+
+## BS06 = 3-21++G(1d,1p)
+gamess_BS06: $BASIS  GBASIS=N21 NGAUSS=3 NDFUNC=1 NPFUNC=1
+gamess_BS06:         DIFFSP=.T. DIFFS=.T.                 $END
+
+## BS10 = 6-31G(1d)
+gamess_BS10: $BASIS  GBASIS=N31 NGAUSS=6 NDFUNC=1 NPFUNC=0
+gamess_BS10:         DIFFSP=.F.                           $END
+
+## BS11 = 6-31G(1d,1p)
+gamess_BS11: $BASIS  GBASIS=N31 NGAUSS=6 NDFUNC=1 NPFUNC=1
+gamess_BS11:         DIFFSP=.F.                           $END
+
+## BS12 = 6-31+G(1d,1p)
+gamess_BS12: $BASIS  GBASIS=N31 NGAUSS=6 NDFUNC=1 NPFUNC=1
+gamess_BS12:         DIFFSP=.T.                           $END
+
+## BS13 = 6-31++G(1d,1p)
+gamess_BS13: $BASIS  GBASIS=N31 NGAUSS=6 NDFUNC=1 NPFUNC=1
+gamess_BS13:         DIFFSP=.T. DIFFS=.T.                 $END
+
+## BS14 = 6-311++G(2d,2p)
+gamess_BS14: $BASIS  GBASIS=N311 NGAUSS=6 NDFUNC=2 NPFUNC=2
+gamess_BS14:         DIFFSP=.T. DIFFS=.T.                 $END
+
+###############################################################################
+## BS20 = CCD
+gamess_BS20: $BASIS  GBASIS=CCD                          $END
+
+## BS21 = CCT
+gamess_BS21: $BASIS  GBASIS=CCT                          $END
+
+## BS22 = CCQ
+gamess_BS22: $BASIS  GBASIS=CCQ                          $END
+
+## BS30 = ACCD
+gamess_BS30: $BASIS  GBASIS=ACCD                          $END
+
+## BS31 = ACCT
+gamess_BS31: $BASIS  GBASIS=ACCT                          $END
+
+## BS32 = ACCQ
+gamess_BS32: $BASIS  GBASIS=ACCQ                          $END
+
+###############################################################################

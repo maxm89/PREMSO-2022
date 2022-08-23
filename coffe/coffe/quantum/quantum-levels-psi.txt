@@ -1,0 +1,353 @@
+## QMOPT (optimization) and QMSP (single-point) options
+## DF: Density Fitted (aka Resolution-of-the-Identity)
+## O: orbital optimized
+
+## QMOPT10, QMSP10 = rhf
+## QMOPT11 = UHF
+## QMOPT12 = ROHF
+
+## QMOPT20, QMSP20 = RHF-DF-MP2
+## QMOPT21, QMSP21 = UHF-DF-MP2
+## QMOPT22, QMSP22 = ROHF-DF-MP2 --> must do gradients with finite differences (slow)
+
+## QMOPT29, QMSP29 = RHF-DF-OMP2
+## QMOPT30, QMSP30 = UHF-DF-OMP2
+## QMOPT31, QMSP31 = ROHF-DF-OMP2
+
+## QMOPT50 = RHF-DF-MP3
+
+## QMSP35 = RHF-DF-MP2.5
+## QMSP36 = UHF-DF-MP2.5
+## QMSP37 = ROHF-DF-MP2.5 --> not available in Psi4 yet
+
+## QMSP40 = RHF-DF-OMP2.5
+## QMSP41 = UHF-DF-OMP2.5
+## QMSP42 = ROHF-DF-OMP2.5
+
+## QMSP50 = RHF-DF-MP3
+
+## QMSP60 = CCSD
+## QMSP61 = CCSD(T)
+
+## QMSP70 = b3lyp
+
+## QM98 = AM1
+## QM99 = PM3
+###############################################################################
+## Additional common settings that a user could use (see Psi4 manual)
+## set globals {
+##  diis false
+##  g_convergence gau_verytight
+##  g_convergence gau_tight
+##  g_convergence QCHEM (default)
+##  geom_maxiter 150
+##  e_convergence 10
+##  d_convergence 10
+##  scf_type pk
+##  reference rhf
+##  fixed_coord_force_constant 150.0
+## }
+
+QMOPT10: rhf
+psi4_QMOPT10: set globals {
+psi4_QMOPT10:   reference rhf
+psi4_QMOPT10:   g_convergence gau_tight
+psi4_QMOPT10:   basis BASISSET
+psi4_QMOPT10: }
+psi4_QMOPT10: optimize('scf')
+
+QMOPT20: mp2
+psi4_QMOPT20: set globals {
+psi4_QMOPT20:   reference rhf
+psi4_QMOPT20:   g_convergence gau_tight
+psi4_QMOPT20:   basis BASISSET
+psi4_QMOPT20:   freeze_core true
+psi4_QMOPT20: }
+psi4_QMOPT20: optimize('mp2')
+
+QMOPT21: mp2
+psi4_QMOPT21: set globals {
+psi4_QMOPT21:   reference uhf
+psi4_QMOPT21:   g_convergence gau_tight
+psi4_QMOPT21:   basis BASISSET
+psi4_QMOPT21:   freeze_core true
+psi4_QMOPT21: }
+psi4_QMOPT21: optimize('mp2')
+
+QMOPT22: mp2
+psi4_QMOPT22: set globals {
+psi4_QMOPT22:   reference rohf
+psi4_QMOPT22:   g_convergence gau_tight
+psi4_QMOPT22:   basis BASISSET
+psi4_QMOPT22:   freeze_core true
+psi4_QMOPT22: }
+psi4_QMOPT22: optimize('mp2')
+
+QMOPT29: omp2
+psi4_QMOPT29: set globals {
+psi4_QMOPT29:   reference rhf
+psi4_QMOPT29:   g_convergence gau_tight
+psi4_QMOPT29:   basis BASISSET
+psi4_QMOPT29:   freeze_core true
+psi4_QMOPT29: }
+psi4_QMOPT29: optimize('omp2')
+
+QMOPT31: omp2
+psi4_QMOPT31: set globals {
+psi4_QMOPT31:   reference rohf
+psi4_QMOPT31:   g_convergence gau_tight
+psi4_QMOPT31:   basis BASISSET
+psi4_QMOPT31:   freeze_core true
+psi4_QMOPT31: }
+psi4_QMOPT31: optimize('omp2')
+
+QMOPT50: mp3
+psi4_QMOPT50: set globals {
+psi4_QMOPT50:   reference rhf
+psi4_QMOPT50:   g_convergence gau_tight
+psi4_QMOPT50:   basis BASISSET
+psi4_QMOPT50:   freeze_core true
+psi4_QMOPT50: }
+psi4_QMOPT50: optimize('mp3')
+
+QMOPT70: b3lyp
+psi4_QMOPT70: set globals {
+psi4_QMOPT70:   g_convergence gau_tight
+psi4_QMOPT70:   basis BASISSET
+psi4_QMOPT70:   #set dft_spherical_points 590
+psi4_QMOPT70:   #set dft_radial_points 99
+psi4_QMOPT70: }
+psi4_QMOPT70: optimize('b3lyp')
+###############################################################################
+
+QMSP10: scf
+psi4_QMSP10: set globals {
+psi4_QMSP10:   reference rhf
+psi4_QMSP10:   basis BASISSET
+psi4_QMSP10: }
+psi4_QMSP10: energy('scf')
+
+QMSP20: mp2
+psi4_QMSP20: set globals {
+psi4_QMSP20:   reference rhf
+psi4_QMSP20:   scf_type df
+psi4_QMSP20:   basis BASISSET
+psi4_QMSP20: }
+psi4_QMSP20: energy('mp2')
+
+QMSP21: mp2
+psi4_QMSP21: set globals {
+psi4_QMSP21:   reference uhf
+psi4_QMSP21:   scf_type df
+psi4_QMSP21:   mp_type df
+psi4_QMSP21:   basis BASISSET
+psi4_QMSP21:   freeze_core true
+psi4_QMSP21: }
+psi4_QMSP21: optimize('mp2')
+
+QMSP22: mp2
+psi4_QMSP22: set globals {
+psi4_QMSP22:   reference rohf
+psi4_QMSP22:   scf_type df
+psi4_QMSP22:   mp_type df
+psi4_QMSP22:   basis BASISSET
+psi4_QMSP22:   freeze_core true
+psi4_QMSP22: }
+psi4_QMSP22: optimize('mp2')
+
+QMSP29: omp2
+psi4_QMSP29: set globals {
+psi4_QMSP29:   reference rhf
+psi4_QMSP29:   basis BASISSET
+psi4_QMSP29:   scf_type df
+psi4_QMSP29:   mp_type df
+psi4_QMSP29:   freeze_core true
+psi4_QMSP29: }
+psi4_QMSP29: energy('omp2')
+
+QMSP30: omp2
+psi4_QMSP30: set globals {
+psi4_QMSP30:   reference uhf
+psi4_QMSP30:   basis BASISSET
+psi4_QMSP30:   scf_type df
+psi4_QMSP30:   mp_type df
+psi4_QMSP30:   freeze_core true
+psi4_QMSP30: }
+psi4_QMSP30: energy('omp2')
+
+QMSP31: omp2
+psi4_QMSP31: set globals {
+psi4_QMSP31:   reference rohf
+psi4_QMSP31:   basis BASISSET
+psi4_QMSP31:   scf_type df
+psi4_QMSP31:   mp_type df
+psi4_QMSP31:   freeze_core true
+psi4_QMSP31: }
+psi4_QMSP31: energy('omp2')
+
+QMSP35: mp2.5
+psi4_QMSP35: set globals {
+psi4_QMSP35:   reference rhf
+psi4_QMSP35:   basis BASISSET
+psi4_QMSP35:   scf_type df
+psi4_QMSP35:   mp_type df
+psi4_QMSP35:   freeze_core true
+psi4_QMSP35: }
+psi4_QMSP35: energy('mp2.5')
+
+QMSP36: mp2.5
+psi4_QMSP36: set globals {
+psi4_QMSP36:   reference uhf
+psi4_QMSP36:   basis BASISSET
+psi4_QMSP36:   scf_type df
+psi4_QMSP36:   mp_type df
+psi4_QMSP36:   freeze_core true
+psi4_QMSP36: }
+psi4_QMSP36: energy('mp2.5')
+
+QMSP40: omp2.5
+psi4_QMSP40: set globals {
+psi4_QMSP40:   reference rhf
+psi4_QMSP40:   basis BASISSET
+psi4_QMSP40:   scf_type df
+psi4_QMSP40:   mp_type df
+psi4_QMSP40:   freeze_core true
+psi4_QMSP40: }
+psi4_QMSP40: energy('omp2.5')
+
+QMSP41: omp2.5
+psi4_QMSP41: set globals {
+psi4_QMSP41:   reference uhf
+psi4_QMSP41:   basis BASISSET
+psi4_QMSP41:   scf_type df
+psi4_QMSP41:   mp_type df
+psi4_QMSP41:   freeze_core true
+psi4_QMSP41: }
+psi4_QMSP41: energy('omp2.5')
+
+QMSP42: omp2.5
+psi4_QMSP42: set globals {
+psi4_QMSP42:   reference rohf
+psi4_QMSP42:   basis BASISSET
+psi4_QMSP42:   scf_type df
+psi4_QMSP42:   mp_type df
+psi4_QMSP42:   freeze_core true
+psi4_QMSP42: }
+psi4_QMSP42: energy('omp2.5')
+
+QMSP50: mp3
+psi4_QMSP50: set globals {
+psi4_QMSP50:   reference uhf
+psi4_QMSP50:   scf_type df
+psi4_QMSP50:   mp_type df
+psi4_QMSP50:   basis BASISSET
+psi4_QMSP50:   freeze_core true
+psi4_QMSP50: }
+psi4_QMSP50: optimize('mp3')
+
+QMSP60: ccsd
+psi4_QMSP60: set globals {
+psi4_QMSP60:   reference rhf
+psi4_QMSP60:   basis BASISSET
+psi4_QMSP60:   scf_type df
+psi4_QMSP60:   cc_type df
+psi4_QMSP60:   freeze_core true
+psi4_QMSP60: }
+psi4_QMSP60: energy('ccsd')
+
+QMSP61: ccsd(T)
+psi4_QMSP61: set globals {
+psi4_QMSP61:   reference rhf
+psi4_QMSP61:   basis BASISSET
+psi4_QMSP61:   scf_type df
+psi4_QMSP61:   cc_type df
+psi4_QMSP61:   freeze_core true
+psi4_QMSP61: }
+psi4_QMSP61: energy('ccsd(t)')
+
+QMSP70: b3lyp
+psi4_QMSP70: set globals {
+psi4_QMSP70:   scf_type df
+psi4_QMSP70:   basis BASISSET
+psi4_QMSP70:   guess sad
+psi4_QMSP70: }
+psi4_QMSP70: energy('b3lyp')
+
+
+###############################################################################
+psi4_BS02: 3-21G
+psi4_BS03: 3-21G(1d)
+psi4_BS04: 3-21G(1d,1p)
+psi4_BS05: 3-21+G(1d,1p)
+psi4_BS06: 3-21++G(1d,1p)
+psi4_BS10: 6-31G(d)
+psi4_BS11: 6-31G(1d,1p)
+psi4_BS12: 6-31+G(1d,1p)
+psi4_BS13: 6-31++G(1d,1p)
+psi4_BS14: 6-311++G(2d,2p)
+psi4_BS20: cc-pvdz
+psi4_BS21: cc-pvtz
+psi4_BS22: cc-pvqz
+psi4_BS30: aug-cc-pvdz
+psi4_BS31: aug-cc-pvtz
+psi4_BS32: aug-cc-pvqz
+psi4_BS40: aug-cc-pvdz-ri
+psi4_BS41: aug-cc-pvtz-ri
+psi4_BS42: aug-cc-pvqz-ri
+
+## Jensen basis sets - pcn is actually n+1 zeta basis set (i.e. pc2 = triple-zeta basis set)
+##      pcseg - segmented basis set, which is more expensive than the pc-n versions
+psi4_BS70: pcseg-0
+psi4_BS71: pcseg-1
+psi4_BS72: pcseg-2
+psi4_BS73: pcseg-3
+psi4_BS74: pcseg-4
+psi4_BS75: aug-pcseg-0
+psi4_BS76: aug-pcseg-1
+psi4_BS77: aug-pcseg-2
+psi4_BS78: aug-pcseg-3
+psi4_BS79: aug-pcseg-4
+psi4_BS80: pcSseg-0
+psi4_BS81: pcSseg-1
+psi4_BS82: pcSseg-2
+psi4_BS83: pcSseg-3
+psi4_BS84: pcSseg-4
+psi4_BS85: aug-pcSseg-0
+psi4_BS86: aug-pcSseg-1
+psi4_BS87: aug-pcSseg-2
+psi4_BS88: aug-pcSseg-3
+psi4_BS89: aug-pcSseg-4
+
+## Karlsruhe basis sets
+psi4_BS90: def2-SV(P)
+psi4_BS91: def2-SVP
+psi4_BS92: def2-TZVP
+psi4_BS93: def2-TZVPP
+psi4_BS94: def2-QZVPP
+psi4_BS95: def2-SVPD
+psi4_BS96: def2-TZVPD
+psi4_BS97: def2-TZVPPD
+psi4_BS98: def2-QZVPPD
+
+
+
+###############################################################################
+## Complete Basis Set Extrapolations
+
+## CBSa23 = aug-cc-pv[dt]z
+psi4_CBSa23: energy(cbs, corl_wfn='THEORY', corl_basis='aug-cc-pv[dt]z', scf_basis='aug-cc-pv[dt]z', corl_scheme=corl_xtpl_helgaker_2, scf_scheme=scf_xtpl_helgaker_2)
+
+## CBSa34 = aug-cc-pv[tq]z
+psi4_CBSa34: energy(cbs, corl_wfn='THEORY', corl_basis='aug-cc-pv[tq]z', scf_basis='aug-cc-pv[tq]z', corl_scheme=corl_xtpl_helgaker_2, scf_scheme=scf_xtpl_helgaker_2)
+
+## CBSa45 = aug-cc-pv[q5]z
+psi4_CBSa45: energy(cbs, corl_wfn='THEORY', corl_basis='aug-cc-pv[q5]z', scf_basis='aug-cc-pv[q5]z', corl_scheme=corl_xtpl_helgaker_2, scf_scheme=scf_xtpl_helgaker_2)
+
+## CBS23 = cc-pv[dt]z
+psi4_CBS23: energy(cbs, corl_wfn='THEORY', corl_basis='cc-pv[dt]z', scf_basis='cc-pv[dt]z', corl_scheme=corl_xtpl_helgaker_2, scf_scheme=scf_xtpl_helgaker_2)
+
+## CBS34 = cc-pv[tq]z
+psi4_CBS34: energy(cbs, corl_wfn='THEORY', corl_basis='cc-pv[tq]z', scf_basis='cc-pv[tq]z', corl_scheme=corl_xtpl_helgaker_2, scf_scheme=scf_xtpl_helgaker_2)
+
+## CBS45 = cc-pv[q5]z
+psi4_CBS45: energy(cbs, corl_wfn='THEORY', corl_basis='cc-pv[q5]z', scf_basis='cc-pv[q5]z', corl_scheme=corl_xtpl_helgaker_2, scf_scheme=scf_xtpl_helgaker_2)

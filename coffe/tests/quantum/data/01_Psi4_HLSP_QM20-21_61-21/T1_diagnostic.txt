@@ -1,0 +1,4 @@
+molecule-01-psi.inp.log: 0.008599335839
+molecule-10-psi.inp.log: 0.008756694839
+molecule-01-psi.inp.log: 0.008613201907
+molecule-10-psi.inp.log: 0.008756694839

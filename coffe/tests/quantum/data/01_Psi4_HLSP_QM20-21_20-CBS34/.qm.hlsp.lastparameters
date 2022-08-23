@@ -1,0 +1,1 @@
+create_qm_hlsp.sh -qm1 20-21 -qm2 QMSP20 -bs energy(cbs, corl_wfn='THEORY', corl_basis='cc-pv[tq]z', scf_basis='cc-pv[tq]z', corl_scheme=corl_xtpl_helgaker_2, scf_scheme=scf_xtpl_helgaker_2) -ps Psi4

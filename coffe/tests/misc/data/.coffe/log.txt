@@ -1,0 +1,24 @@
+2018-01-08 19:33:13,369 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 19:33:13,369 - DEBUG - Arguments: {'work_dir': '.', 'atom4': '11', 'atom3': '8', 'atom2': '5', 'atom1': '1', 'name': 'defaultname', 'pdbfiles': [<_io.TextIOWrapper name='test.pdb' mode='r' encoding='UTF-8'>]}
+2018-01-08 19:33:44,896 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 19:33:44,896 - DEBUG - Arguments: {'work_dir': '.', 'atom4': '11', 'atom3': '8', 'atom2': '5', 'atom1': '1', 'name': 'defaultname', 'pdbfiles': [<_io.TextIOWrapper name='test.pdb' mode='r' encoding='UTF-8'>]}
+2018-01-08 19:33:55,229 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 19:33:55,230 - DEBUG - Arguments: {'work_dir': '.', 'atom4': '11', 'atom3': '8', 'atom2': '5', 'atom1': '1', 'name': 'phi', 'pdbfiles': [<_io.TextIOWrapper name='test.pdb' mode='r' encoding='UTF-8'>]}
+2018-01-08 19:34:28,258 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 19:34:28,258 - DEBUG - Arguments: {'work_dir': '.', 'atom4': 'C11', 'atom3': 'C8', 'atom2': 'C5', 'atom1': 'C1', 'name': 'phi', 'pdbfiles': [<_io.TextIOWrapper name='test.pdb' mode='r' encoding='UTF-8'>]}
+2018-01-08 19:34:40,178 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 19:34:40,178 - DEBUG - Arguments: {'work_dir': '.', 'atom4': 'C11', 'atom3': 'C8', 'atom2': 'C5', 'atom1': 'H2', 'name': 'phi', 'pdbfiles': [<_io.TextIOWrapper name='test.pdb' mode='r' encoding='UTF-8'>]}
+2018-01-08 19:34:49,285 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 19:34:49,285 - DEBUG - Arguments: {'work_dir': '.', 'atom4': 'C11', 'atom3': 'C8', 'atom2': 'C5', 'atom1': 'H3', 'name': 'phi', 'pdbfiles': [<_io.TextIOWrapper name='test.pdb' mode='r' encoding='UTF-8'>]}
+2018-01-08 19:35:03,627 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 19:35:03,627 - DEBUG - Arguments: {'work_dir': '.', 'atom4': 'C8', 'atom3': 'C5', 'atom2': 'C1', 'atom1': 'H3', 'name': 'phi', 'pdbfiles': [<_io.TextIOWrapper name='test.pdb' mode='r' encoding='UTF-8'>]}
+2018-01-08 19:35:26,653 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 19:35:26,653 - DEBUG - Arguments: {'work_dir': '.', 'atom4': 'C8', 'atom3': 'C5', 'atom2': 'C1', 'atom1': 'H3p', 'name': 'phi', 'pdbfiles': [<_io.TextIOWrapper name='test.pdb' mode='r' encoding='UTF-8'>]}
+2018-01-08 19:48:16,728 - INFO - Creating pdb structure file (.pdb) from Gamess output file (.log).
+2018-01-08 19:48:16,728 - DEBUG - Arguments: {'work_dir': '.', 'pdb_file': 'molecule-1-gam.inp.log.pdb', 'gamlog_file': 'molecule-1-gam.inp.log'}
+2018-01-08 19:52:44,342 - INFO - Creating pdb structure file (.pdb) from Gamess output file (.log).
+2018-01-08 19:52:44,342 - DEBUG - Arguments: {'work_dir': '.', 'pdb_file': 'molecule-1-gam.inp.log.pdb', 'gamlog_file': 'molecule-1-gam.inp.log'}
+2018-01-08 20:07:32,535 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 20:07:32,535 - DEBUG - Arguments: {'work_dir': '.', 'atom4': 'C8', 'atom3': 'C5', 'atom2': 'C1', 'atom1': 'H3', 'name': 'phi', 'pdbfiles': [<_io.TextIOWrapper name='test.pdb' mode='r' encoding='UTF-8'>]}
+2018-01-08 20:07:53,220 - INFO - Computing dihedral from PDB file (.pdb).
+2018-01-08 20:07:53,220 - DEBUG - Arguments: {'work_dir': '.', 'atom4': 'C8', 'atom3': 'C5', 'atom2': 'C1', 'atom1': 'H3', 'name': 'phi', 'pdbfiles': [<_io.TextIOWrapper name='molecule-1-gam.inp.log.pdb' mode='r' encoding='UTF-8'>]}

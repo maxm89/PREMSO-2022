@@ -1,0 +1,1 @@
+/home/kkirsc3m/git/Wolf2Pack/Wolf2Pack_Scripts/create_qm_opt.sh -qm1 QMOPT20 -bs BS21 -c 0 -mu 1 -p psi4 -i all

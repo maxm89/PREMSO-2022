@@ -1,0 +1,7 @@
+Constraint Minimization
+&cntrl
+    imin=1, dielc=1, ntb=1,
+    maxcyc=10000, cut=8.0,
+    ntc=1, ntf=1, nsnb=10,
+    drms=0.1
+&end

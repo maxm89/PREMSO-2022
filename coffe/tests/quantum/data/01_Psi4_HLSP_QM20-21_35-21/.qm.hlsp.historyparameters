@@ -1,0 +1,1 @@
+create_qm_hlsp.sh -qm1 20-21 -qm2 QMSP26 -bs aug-cc-pvtz -ps Psi4

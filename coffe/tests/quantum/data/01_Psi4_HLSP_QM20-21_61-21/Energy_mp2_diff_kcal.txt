@@ -1,0 +1,2 @@
+molecule-01-psi.inp.log	0.000 
+molecule-10-psi.inp.log	0.777 

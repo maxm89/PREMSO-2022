@@ -1,0 +1,1 @@
+-g 7 -l 00_Gamess_Opt_QM10-10/molecule-001-gam.inp.log -x 1,5,8,11 -v 0 -t T -qm1 QMOPT10 -b BS10

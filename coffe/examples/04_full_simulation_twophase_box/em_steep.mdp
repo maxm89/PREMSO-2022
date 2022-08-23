@@ -1,0 +1,21 @@
+; RUN CONTROL PARAMETERS
+integrator               = steep 	; A steepest descent algorithm for energy minimization. The maximum step size is emstep, the tolerance is emtol.
+nsteps                   = 50000	; (0) maximum number of steps to integrate or minimize, -1 is no maximum
+
+; ENERGY MINIMIZATION OPTIONS
+; Force tolerance and initial step-size
+emtol                    = 1000.0	; (10.0) [kJ mol-1 nm-1] the minimization is converged when the maximum force is smaller than this value
+emstep                   = 0.01		; (0.01) [nm] initial step-size
+
+; OUTPUT CONTROL OPTIONS
+; Output frequency for energies to log file and energy file
+nstlog                   = 1		; (1000) [steps] number of steps that elapse between writing energies to the log file, the last energies are always written
+nstenergy                = 1		; (1000) [steps] number of steps that else between writing energies to energy file, the last energies are always written, should be a multiple of nstcalcenergy
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+; Method for doing electrostatics
+coulombtype              = PME
+rcoulomb                 = 1.0
+; Method for doing Van der Waals
+vdw-type                 = Cut-off
+rvdw                     = 1.0

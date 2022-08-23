@@ -1,0 +1,34 @@
+
+# Default values for coffe's global configuration
+
+[coffe]
+
+# If you want to customize coffe's behavior, you can overwrite
+# these defaults in local files named .cofferc.
+
+# These .cofferc files
+# reside either in your home directory or in any parent directory
+# of the current working directory. Each option has to be defined
+# inside the [coffe] section. You must not define other sections
+# and options than those specified in this default file.
+
+# The priority goes from special to general:
+#  -    Options in directory's .cofferc overwrite options in any
+#       parent directory's .cofferc
+#  -    Options in and parent directory's .cofferc overwrite options
+#       in your home directory's .cofferc
+#  -    Options in your home directory's .cofferc overwrite the
+#       defaults (this file)
+
+
+# gromacs executable
+# (e.g. gmx_mpi, /usr/bin/gmx, ...)
+gmx         = gmx
+
+# full gromacs mdrun command
+# (e.g. mpirun -np 4 /usr/local/bin/gromacs-5.1.4/bin/gmx mdrun -ntomp 6)
+gmx_mdrun   = gmx mdrun -nt 16
+
+# amber md solver
+# (e.g. sander, pmemd, sander.MPI, pmemd.MPI. pmemd.cuda, ...)
+amb_md      = sander

@@ -1,0 +1,33 @@
+ $CONTRL ICHARG=0 NZVAR=45 MPLEVL=0 ISPHER=0
+         RUNTYP=OPTIMIZE SCFTYP=RHF EXETYP=RUN
+         MULT=1 UNITS=ANGS MAXIT=200
+         COORD=PRINAXIS                       $END
+ $BASIS  GBASIS=N31 NGAUSS=6 NDFUNC=1 NPFUNC=0
+         DIFFSP=.F.                           $END
+ $SCF    DIRSCF=.F. CONV=1.0E-08              $END
+ $SYSTEM TIMLIM=50000 MWORDS=mwords MEMDDI=memddi $END
+ $FORCE  METHOD=SEMINUM VIBANL=.F.            $END
+ $STATPT NSTEP=200 OPTTOL=1.0E-06             $END
+ $GUESS  GUESS=HUCKEL                         $END
+ $ZMAT   AUTO=.TRUE. DLC=.TRUE.               $END
+ $DATA
+ Full optimization
+ C1 
+ C     6.0     -2.548   0.336   0.010
+ H     1.0     -2.606   0.892  -0.921
+ H     1.0     -2.580   1.053   0.825
+ H     1.0     -3.438  -0.283   0.080
+ C     6.0      2.552   0.322  -0.065
+ H     1.0      3.440  -0.301  -0.021
+ H     1.0      2.585   0.879  -0.997
+ H     1.0      2.611   1.040   0.749
+ C     6.0      1.279  -0.518   0.031
+ H     1.0      1.293  -1.088   0.958
+ H     1.0      1.267  -1.248  -0.775
+ C     6.0      0.002   0.322  -0.027
+ H     1.0      0.016   1.053   0.780
+ H     1.0     -0.010   0.893  -0.954
+ C     6.0     -1.277  -0.511   0.069
+ H     1.0     -1.293  -1.241  -0.738
+ H     1.0     -1.267  -1.082   0.995
+ $END

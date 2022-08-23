@@ -1,0 +1,5 @@
+entity,rmsd_all,rmsd_noH
+data/molecule-1.pdb,0.000,0.000
+data/molecule-2.pdb,0.352,0.031
+data/molecule-3.pdb,0.207,0.016
+data/molecule-4.pdb,0.400,0.023

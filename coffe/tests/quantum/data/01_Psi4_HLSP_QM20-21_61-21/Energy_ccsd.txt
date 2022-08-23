@@ -1,0 +1,2 @@
+molecule-01-psi.inp.log -315.075554454957
+molecule-10-psi.inp.log -315.072839937284

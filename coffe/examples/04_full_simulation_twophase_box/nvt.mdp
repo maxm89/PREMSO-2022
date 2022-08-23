@@ -1,0 +1,58 @@
+; RUN CONTROL PARAMETERS
+integrator               = md		; (md) md, md-vv, md-vv-avek, sd, bd, steep, sg, l-bfgs, nm, tpi, tpic
+; Start time and timestep in ps
+tinit                    = 0		; (0) [ps] starting time for your run (only makes sense for time-based integrators)
+dt                       = 0.001	; (0.001) [ps] time step for integration (only makes sense for time-based integrators)
+nsteps                   = 200000	; (0) maximum number of steps to integrate or minimize, -1 is no maximum
+
+; OUTPUT CONTROL OPTIONS
+; Output frequency for coords (x), velocities (v) and forces (f)
+nstxout                  = 100		; (0) [steps] number of steps that elapse between writing coordinates to output trajectory file, the last coordinates are always written
+nstvout                  = 100		; (0) [steps] number of steps that elapse between writing velocities to output trajectory, the last velocities are always written
+nstfout                  = 0		; (0) [steps] number of steps that elapse between writing forces to output trajectory.
+; Output frequency for energies to log file and energy file
+nstlog                   = 100		; (1000) [steps] number of steps that elapse between writing energies to the log file, the last energies are always written
+nstcalcenergy            = 100		; (100) number of steps that elapse between calculating the energies, 0 is never. This option is only relevant with dynamics.
+nstenergy                = 100		; (1000) [steps] number of steps that else between writing energies to energy file, the last energies are always written, should be a multiple of nstcalcenergy.
+
+; NEIGHBORSEARCHING PARAMETERS
+; cut-off scheme (Verlet: particle based cut-offs, group: using charge groups)
+cutoff-scheme            = Verlet	; (Verlet) Verlet, Group
+; nblist update frequency
+nstlist                  = 10		; (10) [steps] Frequency to update the neighbor list. When this is 0, the neighbor list is made only once.
+; ns algorithm (simple or grid)
+ns-type                  = Grid		; (Grid) Grid, Simple
+; Periodic boundary conditions: xyz, no, xy
+pbc                      = xyz		; (xyz) xyz, no, xy
+; nblist cut-off        
+rlist                    = 1.0		; (1) [nm] Cut-off distance for the short-range neighbor list.
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+; Method for doing electrostatics
+coulombtype              = PME		; (Cut-off) Cut-off, Ewald, PME, P3M-AD, Reaction-Field, Generalized-Reaction-Field, Reaction-Field-Zero, Shift, Encad-Shift, Switch, User, PME-Switch, PME-User, PME-User-Switch
+rcoulomb                 = 1.0		; (1) [nm] distance for the Coulomb cut-off
+; Method for doing Van der Waals
+vdw-type                 = Cut-off	; (Cut-off) Cut-off, PME, Shift, Switch, Encad-Shift, User
+rvdw                     = 1.0		; (1) [nm] distance for the LJ or Buckingham cut-off
+; Apply long range dispersion corrections for Energy and Pressure
+DispCorr                 = EnerPres		; (No) No, EnerPres, Ener
+; Spacing for the PME/PPPM FFT grid
+fourierspacing           = 0.16		; (0.12) [nm] For ordinary Ewald, the ratio of the box dimensions and the spacing determines a lower bound for the number of wave vectors to use in each (signed) direction.
+; EWALD/PME/PPPM parameters
+pme-order                = 4		; (4) Interpolation order for PME. 4 equals cubic interpolation.
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS
+; Temperature coupling  
+tcoupl                   = V-Rescale	; (No) No, Berendsen, Nose-hoover, Andersen, Andersen-Massive, V-Rescale
+; Groups to couple separately
+tc-grps                  = system     ; groups to couple to separate temperature baths
+; Time constant (ps) and reference temperature (K)
+tau-t                    = 0.1		; [ps] time constant for coupling (one for each group in tc-grps), -1 means no temperature coupling
+ref-t                    = 266	; [K] reference temperature for coupling (one for each group in tc-grps)
+; pressure coupling     
+pcoupl                   = No		; (No) No, Berendsen, Parinello-rahman, MTTK
+
+; GENERATE VELOCITIES FOR STARTUP RUN
+gen-vel                  = No	; (No) No, Yes: Generate velocities in gmx grompp according to a Maxwell distribution at temperature gen-temp, with random seed gen-seed. This is only meaningful with integrator integrator=md.
+gen-temp                 = 266   ; (300) [K] temperature for Maxwell distribution
+gen-seed                 = -1		; (-1) [integer] used to initialize random generator for random velocities, when gen-seed is set to -1, a pseudo random seed is used.

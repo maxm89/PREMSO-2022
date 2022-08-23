@@ -1,0 +1,11 @@
+logFile leap.log
+##	leaprc file for WOLF2PACK derived parameters
+##		 for supplementing the ExTrM force field
+##	load atom type hybridizations
+addAtomTypes {
+	{ "DU"   "C" "sp3" }
+}
+#
+#	Load the main parameter set.
+#
+ExTrM_W2P = loadamberparams SOURCEDIR/frcmod.extrm.w2p

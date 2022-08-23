@@ -1,0 +1,20 @@
+include AUTHORS.rst
+include CONTRIBUTING.rst
+include HISTORY.rst
+include LICENSE
+include README.rst
+
+recursive-include tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
+recursive-include docs/notebooks
+recursive-include docs/_examples
+
+recursive-include examples
+recursive-include tests
+
+include coffe/core/data/coffe.defaults
+include versioneer.py
+include coffe/_version.py

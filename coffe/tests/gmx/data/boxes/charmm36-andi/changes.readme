@@ -1,0 +1,6 @@
+I have included more water models and added a file alkanes.rtp, that define alkanes for the CHARMM36 Lipid force field.
+Andreas Kraemer, 02/16/17
+
+Changes:
+ - alkanes_andi.rtp added to directory
+ - added a file waters_andi.itp to define custom water atomtypes

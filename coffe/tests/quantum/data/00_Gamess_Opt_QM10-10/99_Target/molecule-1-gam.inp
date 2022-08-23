@@ -1,0 +1,38 @@
+ ! Keywords below are only useful for providing a starting input...
+ ! See the GAMESS-US documentation...
+ $CONTRL  ICHARG=0 MPLEVL=0
+          RUNTYP=OPTIMIZE SCFTYP=RHF EXETYP=RUN
+          MULT=1 UNITS=ANGS MAXIT=200
+ !        INTTYP=HONDO QMTTOL=1.0E-08 ITOL=30 ICUT=20
+          COORD=CART                           $END
+ $SCF     DIRSCF=.T. CONV=1.0E-08              $END
+ $SYSTEM  TIMLIM=50000 MWORDS=32 MEMDDI=0      $END
+ $STATPT  NSTEP=200 OPTTOL=1.0E-06
+          HESS=CALC IHREP=10                   $END
+ $FORCE   METHOD=ANALYTIC VIBANL=.F.           $END
+ $BASIS   GBASIS=N31 NGAUSS=6 NDFUNC=1 NPFUNC=0
+          DIFFSP=.F.                           $END
+ $GUESS   GUESS=HUCKEL                         $END
+ $DATA
+ GAMESS-US optimization output to be used by R.E.D.
+ C1 
+ C     6.0     -3.066   0.933   0.000
+ H     1.0     -3.444   1.045  -0.973
+ H     1.0     -2.674   1.849   0.331
+ H     1.0     -3.839   0.631   0.643
+ C     6.0      1.954   0.132  -0.000
+ H     1.0      2.738  -0.619   0.000
+ H     1.0      2.096   0.757  -0.877
+ H     1.0      2.096   0.758   0.877
+ C     6.0      0.568  -0.512   0.000
+ H     1.0      0.470  -1.157   0.871
+ H     1.0      0.470  -1.158  -0.870
+ C     6.0     -0.568   0.512  -0.000
+ H     1.0     -0.470   1.158   0.870
+ H     1.0     -0.470   1.157  -0.871
+ C     6.0     -1.954  -0.132   0.000
+ H     1.0     -2.096  -0.758  -0.877
+ H     1.0     -2.096  -0.757   0.877
+ $END
+
+

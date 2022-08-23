@@ -1,0 +1,42 @@
+ExTrM Force Field (Copyright KNK 2015)
+MASS
+CX 12.01                             sp3 C aliphatic
+HC 1.008                             H aliph. bond. to C without electrwd. groups
+
+BOND
+CX-CX  303.1    1.535       saturated hydrocarbons
+CX-HC  337.3    1.092       saturated hydrocarbons
+
+ANGLE
+CX-CX-CX     63.21    110.63   saturated hydrocarbons
+CX-CX-HC     46.37    110.05   saturated hydrocarbons
+HC-CX-HC     39.43    108.35   saturated hydrocarbons
+
+DIHEDRAL
+CX-CX-CX-CX   1   -0.3112        0.0            -1.         SCEE=1.2 SCNB=2.0
+              1    0.1233        0.0            -2.         SCEE=1.2 SCNB=2.0
+              1    0.1149        0.0            -3.         SCEE=1.2 SCNB=2.0
+              1   -0.2199        0.0            -4.         SCEE=1.2 SCNB=2.0
+              1    0.2170        0.0             5.         SCEE=1.2 SCNB=2.0
+CX-CX-CX-HC   1    0.00          0.0            -1.         SCEE=1.2 SCNB=2.0
+              1    0.00          0.0            -2.         SCEE=1.2 SCNB=2.0
+              1    0.16          0.0             3.         SCEE=1.2 SCNB=2.0
+HC-CX-CX-HC   1    0.00          0.0            -1.         SCEE=1.2 SCNB=2.0
+              1    0.00          0.0            -2.         SCEE=1.2 SCNB=2.0
+              1    0.15          0.0             3.         SCEE=1.2 SCNB=2.0
+
+IMPROPER
+DU-DU-DU-DU         10.0         180.          2.           Dummy atom improper torsion
+
+NONBON
+  CX          <X_1>  <X_3>             OPLS 1996 Paper   1.9080 0.1094, 0.19080 0.4580359
+  HC          <X_2>  <X_4>             Lipid14 v2.10     1.4600 0.0100, 0.14600 0.041868
+
+END
+END
+
+NOTES: Read the parameters by placing the middle atom, or two atoms in the case of torsions,
+then the first atom, and finally the last atom in alphabetical order.
+
+ExTrM Contributors include:
+Karl N. Kirschner

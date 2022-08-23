@@ -1,0 +1,72 @@
+; ============================
+; Run control
+; ============================
+integrator               = l-bfgs
+nsteps                   = 5000
+define                   = -DFLEXIBLE
+; EM criteria and other stuff
+emtol                    = 100
+emstep                   = 0.01
+niter                    = 20
+nbfgscorr                = 10
+
+
+; ============================
+; Output control
+; ============================
+nstlog                   = 1
+nstenergy                = 1
+
+
+; ============================
+; Nonbonded Interactions
+; ============================
+; Method for doing electrostatics
+coulombtype              = PME
+rcoulomb-switch          = 0
+rcoulomb                 = 1.2	; recommended for CHARMM FFs by http://www.gromacs.org/Documentation/Terminology/Force_Fields/CHARMM
+; Relative dielectric constant for the medium and the reaction field
+epsilon_r                = 1
+epsilon_rf               = 1
+; Method for doing Van der Waals
+vdwtype = PME
+; cut-off lengths
+rvdw-switch              =  0
+rvdw                     = 1.2	; recommended for CHARMM FFs by http://www.gromacs.org/Documentation/Terminology/Force_Fields/CHARMM
+; Apply long range dispersion corrections for Energy and Pressure
+DispCorr                 = no	; recommended for CHARMM FFs by http://www.gromacs.org/Documentation/Terminology/Force_Fields/CHARMM
+; Extension of the potential lookup tables beyond the cut-off
+table-extension          = 1
+; Seperate tables between energy group pairs
+energygrp_table          =
+; Spacing for the PME/PPPM FFT grid
+fourierspacing           = 0.12
+; FFT grid size, when a value is 0 fourierspacing will be used
+fourier_nx               = 0
+fourier_ny               = 0
+fourier_nz               = 0
+; EWALD/PME/PPPM parameters
+pme_order                = 4
+ewald_rtol               = 1e-05
+ewald_geometry           = 3d
+epsilon_surface          = 0
+optimize_fft             = no
+
+; ============================
+; Ensemble
+; ============================
+tcoupl                   = no
+pcoupl                   = no
+
+; ============================
+; Misc
+; ============================
+gen_vel                  = no
+; options for bonds
+constraints              = none     ; L-BFGS doesn't work with constraints
+; Type of constraint algorithm
+constraint-algorithm     = lincs
+; Do not constrain the starting configuration
+continuation             = no
+; Highest order in the expansion of the constraint coupling matrix
+lincs-order              = 12

@@ -17,6 +17,18 @@ import re
 
 '''
 
+## IO helper -> move to other file
+def DOES_FILE_EXIST(MYFILE):
+    if not os.path.isfile(MYFILE):
+        print('\033[92m','        ' + MYFILE + ' does not exists or is set incorrectly.', '\x1b[0m', '\n')
+        sys.exit()
+
+def DOES_DIR_EXIST(DIRECTORY):
+    if not os.path.isdir(DIRECTORY):
+        print('\033[92m','        The directory ' + DIRECTORY + ' does not exists.', '\x1b[0m', '\n')
+        sys.exit()
+
+
 class TopFileTemplate():
     def __init__(self, top_file_src, target_name):
         self._read_template(top_file_src)
@@ -59,18 +71,8 @@ class TopFileTemplate():
         return len(re.findall(r'<\d+>', content))
 
 
+
 def mstart(x, OUTPATH, BINDIR, TPDUMMY, MOL2_FILE, LEAPRC_FILE, W2P_FILE, target_names):
-
-    ## IO helper -> move to other file
-    def DOES_FILE_EXIST(MYFILE):
-        if not os.path.isfile(MYFILE):
-            print('\033[92m','        ' + MYFILE + ' does not exists or is set incorrectly.', '\x1b[0m', '\n')
-            sys.exit()
-
-    def DOES_DIR_EXIST(DIRECTORY):
-        if not os.path.isdir(DIRECTORY):
-            print('\033[92m','        The directory ' + DIRECTORY + ' does not exists.', '\x1b[0m', '\n')
-            sys.exit()
 
     ###########################################################
     def relative_energy(completeList = [], *args):
@@ -191,12 +193,12 @@ def mstart(x, OUTPATH, BINDIR, TPDUMMY, MOL2_FILE, LEAPRC_FILE, W2P_FILE, target
     ###########################################################
 
     # Convert gromacs units to amber units
-    SIGMA_1 = x[0]*10
-    SIGMA_2 = x[1]*10
-    EPSILON_1 = x[2]/4.1868
-    EPSILON_2 = x[3]/4.1868
+    SIGMA_1 = (x[0]*10*2**(1.0/6.0))/2.0
+    SIGMA_2 = (x[1]*10*2**(1.0/6.0))/2.0
+    EPSILON_1 = x[2]/4.184
+    EPSILON_2 = x[3]/4.184
 
-    print(SIGMA_1, SIGMA_2, EPSILON_1, EPSILON_2)
+    print("params:", SIGMA_1, SIGMA_2, EPSILON_1, EPSILON_2)
 
     ## Check if required directories exist
     if not os.path.exists(BINDIR):
@@ -268,11 +270,23 @@ def mstart(x, OUTPATH, BINDIR, TPDUMMY, MOL2_FILE, LEAPRC_FILE, W2P_FILE, target
     ## Replace location of w2p force-field supplementary parameters.
     shutil.copy2(W2P_FILE,os.path.join(BINDIR_QM_MM, '06_mm_opt/'))
     shutil.copy2(LEAPRC_FILE,os.path.join(BINDIR_QM_MM, '06_mm_opt/'))
-    for line in fileinput.input([os.path.join(os.path.join(BINDIR_QM_MM, '06_mm_opt/'), os.path.basename(W2P_FILE))], inplace=True):
-        print(line.replace('SOURCEDIR', BINDIR_QM_MM + '/06_mm_opt'), end='')
-    for line in fileinput.input([os.path.join(os.path.join(BINDIR_QM_MM, '06_mm_opt/'), os.path.basename(LEAPRC_FILE))], inplace=True):
-        print(line.replace('SOURCEDIR', BINDIR_QM_MM + '/06_mm_opt'), end='')
-
+    print("replace in grow_sander")
+    #for line in fileinput.FileInput([os.path.join(os.path.join(BINDIR_QM_MM, '06_mm_opt/'), os.path.basename(W2P_FILE))], inplace=True):
+        #print(line.replace('SOURCEDIR', BINDIR_QM_MM + '/06_mm_opt'), end='')
+    filee = os.path.join(os.path.join(BINDIR_QM_MM, '06_mm_opt/'), os.path.basename(W2P_FILE))
+    with open(filee, 'r') as f:
+        dataa = f.read()
+        dataa = dataa.replace('SOURCEDIR', BINDIR_QM_MM + '/06_mm_opt')
+    with open(filee, 'w') as f:
+        f.write(dataa)
+    #for line in fileinput.FileInput([os.path.join(os.path.join(BINDIR_QM_MM, '06_mm_opt/'), os.path.basename(LEAPRC_FILE))], inplace=True):
+        #print(line.replace('SOURCEDIR', BINDIR_QM_MM + '/06_mm_opt'), end='')
+    filee = os.path.join(os.path.join(BINDIR_QM_MM, '06_mm_opt/'), os.path.basename(LEAPRC_FILE))
+    with open(filee, 'r') as f:
+        dataa = f.read()
+        dataa = dataa.replace('SOURCEDIR', BINDIR_QM_MM + '/06_mm_opt')
+    with open(filee, 'w') as f:
+        f.write(dataa)
     ###########################################################
     ## 1. Create a mol2 file from the QM log files such that AMBER's tleap can read it.
     ## 2. Create leap input and run tleap
